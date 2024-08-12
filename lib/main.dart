@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_care_app/core/theme.dart';
+import 'package:mental_health_care_app/features/meditation/presentation/screens/meditation_screen.dart';
 import 'package:mental_health_care_app/presentation/onboarding/on_boarding_screen.dart';
 
 void main() {
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
-      home: const OnboardingScreen(),
+      debugShowCheckedModeBanner: false,
+      home: const MeditationScreen(),
     );
   }
 }
