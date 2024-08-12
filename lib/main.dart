@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mental_health_care_app/core/theme.dart';
 import 'package:mental_health_care_app/features/meditation/presentation/screens/meditation_screen.dart';
+import 'package:mental_health_care_app/presentation/bottomNavBar/bloc/navigation_bloc.dart';
+import 'package:mental_health_care_app/presentation/home/screens/home_screen.dart';
 import 'package:mental_health_care_app/presentation/onboarding/on_boarding_screen.dart';
 
 void main() {
@@ -12,11 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      home: const MeditationScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => NavigationBloc(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: AppTheme.lightTheme,
+        debugShowCheckedModeBanner: false,
+        home: const HomeScreen(),
+      ),
     );
   }
 }
