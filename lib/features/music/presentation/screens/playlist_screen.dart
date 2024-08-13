@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mental_health_care_app/core/theme.dart';
 import 'package:mental_health_care_app/features/music/presentation/screens/music_playe_screen.dart';
-import 'package:mental_health_care_app/presentation/bottomNavBar/bloc/navigation_bloc.dart';
-import 'package:mental_health_care_app/presentation/bottomNavBar/bloc/navigation_event.dart';
 
 class PlaylistScreen extends StatelessWidget {
-  PlaylistScreen({super.key});
+  PlaylistScreen({
+    super.key,
+  });
 
   final List<Map<String, String>> songs = [
     {
