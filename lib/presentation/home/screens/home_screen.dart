@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mental_health_care_app/features/meditation/presentation/screens/meditation_screen.dart';
+import 'package:mental_health_care_app/features/music/presentation/screens/music_playe_screen.dart';
 import 'package:mental_health_care_app/presentation/bottomNavBar/bloc/navigation_bloc.dart';
 import 'package:mental_health_care_app/presentation/bottomNavBar/bloc/navigation_state.dart';
 import 'package:mental_health_care_app/presentation/bottomNavBar/widgets/bottom_nav_bar.dart';
@@ -10,11 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   final List<Widget> screens = const [
     MeditationScreen(),
-    Scaffold(
-      body: Center(
-        child: Text("hi"),
-      ),
-    ),
+    MusicPlayeScreen(),
   ];
 
   BottomNavigationBarItem createBottomNavItem({

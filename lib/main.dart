@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Mental Health App',
         theme: AppTheme.lightTheme,
         debugShowCheckedModeBanner: false,
         home: const HomeScreen(),
