@@ -53,6 +53,8 @@ class MusicPlayeScreen extends StatelessWidget {
               progress: const Duration(milliseconds: 1000),
               total: const Duration(milliseconds: 5000),
               baseBarColor: DefaultColors.lightpink,
+              progressBarColor: DefaultColors.pink,
+              thumbColor: DefaultColors.pink,
               onSeek: (duration) {
                 print('User selected a new time : $duration');
               },
