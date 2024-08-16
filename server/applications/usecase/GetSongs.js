@@ -9,7 +9,7 @@ class GetSongs extends Usecaseinterface{
             id: song.id,
             title: song.title,
             author: song.author,
-            songLink: song.songLink,
+            songLink: song.songlink,
         }));
     }
 }

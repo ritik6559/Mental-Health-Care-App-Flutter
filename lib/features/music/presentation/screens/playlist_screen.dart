@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mental_health_care_app/core/theme.dart';
+import 'package:mental_health_care_app/features/music/presentation/bloc/song_bloc.dart';
 import 'package:mental_health_care_app/features/music/presentation/screens/music_playe_screen.dart';
 
 class PlaylistScreen extends StatelessWidget {
@@ -48,40 +50,63 @@ class PlaylistScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.titleMedium,
         ),
       ),
-      body: Container(
-        color: DefaultColors.white,
-        child: ListView.builder(
-          itemCount: songs.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                  songs[index]['thumbnail'].toString(),
-                ),
+      body: BlocBuilder<SongBloc, SongState>(
+        builder: (context, state) {
+          if (state is SongLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (state is SongLoaded) {
+            return Container(
+              color: DefaultColors.white,
+              child: ListView.builder(
+                itemCount: state.songs.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage(
+                        songs[index]['thumbnail'].toString(),
+                      ),
+                    ),
+                    trailing: const Icon(
+                      Icons.arrow_forward_ios,
+                      size: 15,
+                    ),
+                    title: Text(
+                      state.songs[index].title.toString(),
+                      style: Theme.of(context).textTheme.labelMedium,
+                    ),
+                    subtitle: Text(
+                      state.songs[index].author.toString(),
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MusicPlayeScreen(),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios,
-                size: 15,
-              ),
-              title: Text(
-                songs[index]['title'].toString(),
-                style: Theme.of(context).textTheme.labelMedium,
-              ),
-              subtitle: Text(
-                songs[index]['artist'].toString(),
+            );
+          } else if (state is SongError) {
+            return Center(
+              child: Text(
+                state.message,
                 style: Theme.of(context).textTheme.labelSmall,
               ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const MusicPlayeScreen(),
-                  ),
-                );
-              },
             );
-          },
-        ),
+          }
+          return Center(
+            child: Text(
+              'No songs',
+              style: Theme.of(context).textTheme.labelSmall,
+            ),
+          );
+        },
       ),
     );
   }
