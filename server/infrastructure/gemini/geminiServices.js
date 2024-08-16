@@ -2,7 +2,7 @@ const {GoogleGenerativeAI} = require('@google/generative-ai');
 const QuotesRepository = require("../../applications/interface/QuotesRepository");
 const API = require('../../secrets')
 
-const genAi = new GoogleGenerativeAI(API);
+const genAi = new GoogleGenerativeAI("AIzaSyBMFnhrnRbm-gt0CkS9A_oXGk5Q28hPqMg");
 const model = genAi.getGenerativeModel({model:'gemini-1.5-pro'});
 
 class GeminiApi extends QuotesRepository{
@@ -16,7 +16,12 @@ class GeminiApi extends QuotesRepository{
     }
 
     async getAdviceByMood(mood){
-        const promt = `Given the current mood of the user, provide an appropriate meditation advice or mental health exercise. The possible result could be as such {"advice": "specific advice or exercise based on the user's mood "} For example if the user' mood is "happy", the response should be : {"advice": "Engage in a particular practice by listing three things you are thankful for today. This will help you sustan your positive mood},So the mood is: ${mood} return the json only without using json keyword`;
+        const promt = `You will be provided with the mood of the user and you are required to give an advice to the user based on their mood, your response should be of the format
+        {
+        "advice": "specific advice or exercise based on the user's mood "
+        } ,
+        you should return the output without any json keyword and ,
+        now give me an advice if my mood is ${mood} adn remove`;
         const result = await model.generateContent(promt);
         const response = await result.response;
         const text = response.text();
@@ -25,3 +30,4 @@ class GeminiApi extends QuotesRepository{
 }
 
 module.exports = GeminiApi;
+
