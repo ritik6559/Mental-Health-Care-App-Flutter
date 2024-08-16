@@ -21,7 +21,7 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 
-server/secrets.js
+server/infrastrcture/gemini/geminiServices.js
 
 # Flutter/Dart/Pub related
 **/doc/api/
