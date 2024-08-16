@@ -1,7 +1,8 @@
 const {GoogleGenerativeAI} = require('@google/generative-ai');
 const QuotesRepository = require("../../applications/interface/QuotesRepository");
+const API = require('../../secrets')
 
-const genAi = new GoogleGenerativeAI();
+const genAi = new GoogleGenerativeAI(API);
 const model = genAi.getGenerativeModel({model:'gemini-1.5-pro'});
 
 class GeminiApi extends QuotesRepository{
