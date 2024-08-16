@@ -22,6 +22,7 @@ class SongBloc extends Bloc<SongEvent, SongState> {
             SongLoaded(songs: songs),
           );
         } catch (e) {
+          print(e.toString());
           emit(
             SongError(
               message: e.toString(),

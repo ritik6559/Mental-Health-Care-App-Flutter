@@ -1,10 +1,17 @@
 import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mental_health_care_app/core/theme.dart';
+import 'package:mental_health_care_app/features/music/domain/entities/song.dart';
 
-class MusicPlayeScreen extends StatelessWidget {
-  const MusicPlayeScreen({super.key});
+class MusicPlayeScreen extends StatefulWidget {
+  final Song song;
+  const MusicPlayeScreen({super.key, required this.song});
 
+  @override
+  State<MusicPlayeScreen> createState() => _MusicPlayeScreenState();
+}
+
+class _MusicPlayeScreenState extends State<MusicPlayeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
