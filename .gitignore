@@ -22,6 +22,7 @@ migrate_working_dir/
 #.vscode/
 
 server/infrastructure/gemini/geminiServices.js
+server/infrastructure/gemini/geminiServices.js
 
 # Flutter/Dart/Pub related
 **/doc/api/
