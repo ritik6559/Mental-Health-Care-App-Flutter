@@ -22,3 +22,5 @@ class GeminiApi extends QuotesRepository{
         return text;
     }
 }
+
+module.exports = GeminiApi;
